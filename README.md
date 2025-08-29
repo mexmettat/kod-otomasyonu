@@ -39,10 +39,8 @@ python app.py
 ```
 kod-otomasyonu/
 ├── screenshots/
-│   ├── anasayfa.jpg
-│   ├── iadeformu.jpg
-│   ├── pdfsayfasi.jpg
-│   └── teslimformu.jpg
+│   ├── index.jpg
+│   ├── compare.jpg
 ├── static/
 │   └── style.css
 ├── templates/
@@ -73,8 +71,8 @@ kod-otomasyonu/
 - HTML + CSS (kurumsal tema)
 
 ## 🖼️ Ekran Görüntüsü
-![VD52 Otomasyon Arayüzü](index.png)
-![VD52 Otomasyon Arayüzü](compare.png)
+![VD52 Otomasyon Arayüzü](index.jpg)
+![VD52 Otomasyon Arayüzü](compare.jpg)
 
 ## 📌 Notlar
 - `Oldmaterialnumber` sütununun başında **M** varsa, algoritma otomatik olarak siler.  
