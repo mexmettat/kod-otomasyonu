@@ -71,8 +71,8 @@ kod-otomasyonu/
 - HTML + CSS (kurumsal tema)
 
 ## 🖼️ Ekran Görüntüsü
-![VD52 Otomasyon Arayüzü](index.jpg)
-![VD52 Otomasyon Arayüzü](compare.jpg)
+![VD52 Otomasyon Arayüzü](screenshots/index.jpg)
+![VD52 Otomasyon Arayüzü](screenshots/compare.jpg)
 
 ## 📌 Notlar
 - `Oldmaterialnumber` sütununun başında **M** varsa, algoritma otomatik olarak siler.  
