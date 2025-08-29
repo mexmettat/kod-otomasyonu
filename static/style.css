@@ -1,0 +1,175 @@
+/* =======================
+   VD52 OTOMASYON – Kurumsal Açık/Koyu Tema (revize)
+   ======================= */
+
+/* --- LIGHT THEME (default) --- */
+:root[data-theme="light"]{
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --accent: #1e40af;     /* lacivert */
+  --accent-2: #0ea5e9;   /* mavi-yeşil */
+  --line: #e6e9f0;
+  --ring: #cbd5e1;
+  --badge: #1d4ed8;
+  --badge-neutral: #475569;
+  --shadow: 0 18px 50px rgba(15, 23, 42, .08);
+  --topbar-bg: rgba(255,255,255,.86);
+  --topbar-border: rgba(15,23,42,.08);
+}
+
+/* --- DARK THEME --- */
+:root[data-theme="dark"]{
+  --bg: #0b1220;
+  --panel: #111827;
+  --ink: #e5e7eb;
+  --muted: #98a3b3;
+  --accent: #2563eb;
+  --accent-2: #14b8a6;
+  --line: #1f2937;
+  --ring: #334155;
+  --badge: #1e40af;
+  --badge-neutral: #64748b;
+  --shadow: 0 20px 60px rgba(0,0,0,.28);
+  --topbar-bg: rgba(11,18,32,.7);
+  --topbar-border: rgba(255,255,255,.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: var(--bg);
+  color:var(--ink);
+  font-family: system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 20px;
+  background:var(--topbar-bg);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--topbar-border);
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700}
+.brand svg{width:20px;height:20px;fill:var(--accent)}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{
+  color:var(--muted); text-decoration:none;
+  padding:8px 12px; border-radius:10px; transition:.15s;
+}
+.nav a:hover{color:var(--ink); background-color:rgba(2,6,23,.06)}
+.nav a.active{
+  color:#fff;
+  background:linear-gradient(90deg, var(--badge), var(--accent));
+  box-shadow:0 0 0 1px rgba(37,99,235,.25) inset;
+}
+
+/* Layout */
+.container{max-width:980px;margin:28px auto;padding:0 16px}
+
+/* Hero */
+.hero{margin:26px 0 10px}
+.hero h1{
+  margin:0 0 6px; font-size:clamp(26px,4vw,34px); letter-spacing:.2px
+}
+.hero p{margin:0;color:var(--muted)}
+code{background:rgba(148,163,184,.18); padding:2px 6px; border-radius:6px}
+
+/* Panel */
+.panel{
+  background: var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px; padding:22px; margin:16px 0;
+  box-shadow: var(--shadow);
+}
+.panel-head{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.badge{
+  font-size:.8rem; color:#fff;
+  background:linear-gradient(90deg, var(--badge), var(--accent));
+  padding:6px 10px; border-radius:999px; letter-spacing:.2px; white-space:nowrap
+}
+.badge.neutral{
+  background:linear-gradient(90deg, var(--badge-neutral), #94a3b8);
+}
+
+/* Alert */
+.alert{
+  background: #f0f7ff;
+  border:1px solid #93c5fd;
+  color: #0b3b8a;
+  border-radius:12px; padding:10px 12px; margin-bottom:12px
+}
+:root[data-theme="dark"] .alert{
+  background:#1f2a3a; border-color:#3b82f6; color:#bfdbfe;
+}
+
+/* Uploader */
+.uploader{display:flex;flex-direction:column;gap:16px}
+.dropzone{
+  display:block; position:relative; border:1px dashed var(--ring); border-radius:14px;
+  background:#f9fafb; transition: all .15s;
+}
+:root[data-theme="dark"] .dropzone{background:linear-gradient(180deg, rgba(148,163,184,.08), rgba(148,163,184,.03))}
+.dropzone:hover{border-color:#4b5563; box-shadow:0 0 0 2px rgba(59,130,246,.25) inset}
+.dropzone input[type=file]{position:absolute; inset:0; opacity:0; cursor:pointer}
+.dz-body{display:flex; align-items:center; gap:12px; padding:26px}
+.dz-body.small{padding:16px}
+.dz-body svg{width:28px;height:28px; fill:var(--accent-2)}
+.dz-title{font-weight:700}
+.dz-sub{color:var(--muted); font-size:.9rem}
+.dz-file{margin-top:4px; color:#475569; font-size:.9rem}
+:root[data-theme="dark"] .dz-file{color:#d1d5db}
+
+/* Buttons */
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+.btn{
+  appearance:none; border:1px solid transparent; cursor:pointer; user-select:none;
+  border-radius:12px; padding:12px 16px; font-weight:700;
+  background:#0f172a; color:#f8fafc; transition:all .14s ease; min-width:180px;
+}
+:root[data-theme="dark"] .btn{background:#1f2937;color:#e5e7eb}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{
+  background:linear-gradient(180deg, var(--accent), #1d4ed8);
+  box-shadow:0 10px 24px rgba(37,99,235,.28);
+  color:#fff;
+}
+.btn.primary:hover{box-shadow:0 16px 28px rgba(37,99,235,.38)}
+.btn.ghost{
+  background:transparent; border-color:var(--ring); text-decoration: none; color:var(--ink)
+}
+.btn.ghost:hover{background-color:rgba(2,6,23,.06)}
+.btn.small{padding:6px 10px; font-weight:600; min-width:auto}
+
+/* Footer */
+.footer{margin:20px 0 8px; color:var(--muted); font-size:.9rem; text-align:center}
+.footer.compact{margin-top:18px}
+
+/* Grid (compare sayfası için) */
+.grid2{display:grid;grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+
+/* Text helpers */
+.muted{color:var(--muted)}
+.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+.sample{opacity:.9}
+
+/* Form reset bits */
+input[type=file]::-webkit-file-upload-button{display:none}
+input[type=file]{font-size:0}
+
+/* (İsteğe bağlı) arka plan dekoru için sınıf – HTML'ine eklediysen kullanılır */
+.bg-blob{
+  position:fixed; inset:auto auto 8% -8%;
+  width:42vw; height:42vw; max-width:700px; max-height:700px;
+  background:radial-gradient(closest-side, rgba(29,78,216,.12), rgba(29,78,216,0));
+  filter: blur(18px); pointer-events:none; z-index:-1;
+}
+:root[data-theme="dark"] .bg-blob{
+  background:radial-gradient(closest-side, rgba(37,99,235,.16), rgba(37,99,235,0));
+}

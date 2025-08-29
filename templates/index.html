@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VD52 Otomasyon | Oluştur</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <!-- arka plan süsü -->
+    <div class="bg-blob"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l7-9 7 9-7 9-7-9zM10 12l5-6 5 6-5 6-5-6z"/></svg>
+        <span>VD52 Otomasyon</span>
+      </div>
+      <nav class="nav">
+        <a class="active" href="{{ url_for('index') }}">Oluştur</a>
+        <a href="{{ url_for('compare') }}">Karşılaştır</a>
+        <button id="themeToggle" class="btn ghost small" type="button" aria-label="Tema">🌞/🌙</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>VD52 Sütunu Oluştur</h1>
+        <p>Excel yükleyin; <code>Oldmaterialnumber</code> Ford kuralına göre boşluklandırılır ve <strong>VD52</strong> olarak eklenir.</p>
+      </section>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert">
+            {% for m in messages %}<div>{{ m }}</div>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- tek kart -->
+      <section class="panel panel-lg">
+        <form class="uploader" action="/" method="post" enctype="multipart/form-data">
+          <label class="dropzone dz-tall">
+            <input id="fileInput" type="file" name="file" accept=".xls,.xlsx" required>
+            <div class="dz-body">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l4 4h-3v6h-2V7H8l4-4zM5 20h14v-2H5v2z"/></svg>
+              <div>
+                <div class="dz-title">Dosyanızı buraya bırakın</div>
+                <div class="dz-sub">veya tıklayıp seçin (.xls / .xlsx)</div>
+                <div class="dz-file" id="fileName"></div>
+              </div>
+            </div>
+          </label>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Oluştur ve İndir</button>
+            <a class="btn ghost" href="{{ url_for('compare') }}">VD52 Karşılaştır</a>
+          </div>
+        </form>
+      </section>
+
+      <footer class="footer compact">
+        <span>© 2025 VD52 Otomasyon</span>
+      </footer>
+    </main>
+
+    <script>
+      // Tema
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem('vd52-theme') || 'light';
+      root.setAttribute('data-theme', savedTheme);
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', current);
+        localStorage.setItem('vd52-theme', current);
+      });
+
+      // Dosya adı
+      const input = document.getElementById('fileInput');
+      const namebox = document.getElementById('fileName');
+      input.addEventListener('change', e => {
+        const f = e.target.files[0];
+        namebox.textContent = f ? f.name : '';
+      });
+    </script>
+  </body>
+</html>
